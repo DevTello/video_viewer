@@ -47,56 +47,53 @@ class _OverlayBottomState extends State<OverlayBottom> {
           height: (style.textStyle.fontSize ?? 14) + barStyle.bar.height,
         ),
         GradientBackground(
-          child: Row(children: [
-            if (isFullscreen)
-              PlayAndPause(
-                type: PlayAndPauseType.bottom,
-                padding: Margin.all(padding),
-              ),
-            if (isFullscreen)
-              const Expanded(child: VideoProgressBar()),
-            if (isFullscreen)
-              SizedBox(width: padding),
-            if (isFullscreen)
-              ValueListenableBuilder(
-                valueListenable: _showRemaingText,
-                builder: (_, bool showText, __) =>
-                    SplashCircularIcon(
-                      padding: halfPadding,
-                      onTap: () {
-                        _showRemaingText.value = !showText;
-                        controller.cancelCloseOverlay();
-                      },
-                      child: Text(
-                        showText
-                            ? _query.durationFormatter(position)
-                            : _query.durationFormatter(position - duration),
-                        style: style.textStyle,
-                      ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              if (isFullscreen)
+                PlayAndPause(
+                  type: PlayAndPauseType.bottom,
+                  padding: Margin.all(padding),
+                ),
+              if (isFullscreen) const Expanded(child: VideoProgressBar()),
+              if (isFullscreen) SizedBox(width: padding),
+              if (isFullscreen)
+                ValueListenableBuilder(
+                  valueListenable: _showRemaingText,
+                  builder: (_, bool showText, __) => SplashCircularIcon(
+                    padding: halfPadding,
+                    onTap: () {
+                      _showRemaingText.value = !showText;
+                      controller.cancelCloseOverlay();
+                    },
+                    child: Text(
+                      showText ? _query.durationFormatter(position) : _query.durationFormatter(position - duration),
+                      style: style.textStyle,
                     ),
-              ),
-            if (isFullscreen)
+                  ),
+                ),
+              if (isFullscreen)
+                SplashCircularIcon(
+                  padding: halfPadding,
+                  onTap: () {
+                    controller.openSettingsMenu();
+                    controller.showAndHideOverlay(false);
+                  },
+                  child: style.settingsStyle.settings,
+                ),
+              if (metadata.enableChat)
+                SplashCircularIcon(
+                  padding: halfPadding,
+                  onTap: () => controller.isShowingChat = true,
+                  child: style.chatStyle.chatIcon,
+                ),
               SplashCircularIcon(
-                padding: halfPadding,
-                onTap: () {
-                  controller.openSettingsMenu();
-                  controller.showAndHideOverlay(false);
-                },
-                child: style.settingsStyle.settings,
+                padding: halfPadding + Margin.right(padding / 2),
+                onTap: () => controller.openOrCloseFullscreen(),
+                child: isFullscreen ? barStyle.fullScreenExit : barStyle.fullScreen,
               ),
-            if (metadata.enableChat)
-              SplashCircularIcon(
-                padding: halfPadding,
-                onTap: () => controller.isShowingChat = true,
-                child: style.chatStyle.chatIcon,
-              ),
-            SplashCircularIcon(
-              padding: halfPadding + Margin.right(padding / 2),
-              onTap: () => controller.openOrCloseFullscreen(),
-              child:
-              isFullscreen ? barStyle.fullScreenExit : barStyle.fullScreen,
-            ),
-          ]),
+            ],
+          ),
         ),
       ],
     );
