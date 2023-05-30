@@ -48,36 +48,42 @@ class _OverlayBottomState extends State<OverlayBottom> {
         ),
         GradientBackground(
           child: Row(children: [
-            PlayAndPause(
-              type: PlayAndPauseType.bottom,
-              padding: Margin.all(padding),
-            ),
-            const Expanded(child: VideoProgressBar()),
-            SizedBox(width: padding),
-            ValueListenableBuilder(
-              valueListenable: _showRemaingText,
-              builder: (_, bool showText, __) => SplashCircularIcon(
+            if (isFullscreen)
+              PlayAndPause(
+                type: PlayAndPauseType.bottom,
+                padding: Margin.all(padding),
+              ),
+            if (isFullscreen)
+              const Expanded(child: VideoProgressBar()),
+            if (isFullscreen)
+              SizedBox(width: padding),
+            if (isFullscreen)
+              ValueListenableBuilder(
+                valueListenable: _showRemaingText,
+                builder: (_, bool showText, __) =>
+                    SplashCircularIcon(
+                      padding: halfPadding,
+                      onTap: () {
+                        _showRemaingText.value = !showText;
+                        controller.cancelCloseOverlay();
+                      },
+                      child: Text(
+                        showText
+                            ? _query.durationFormatter(position)
+                            : _query.durationFormatter(position - duration),
+                        style: style.textStyle,
+                      ),
+                    ),
+              ),
+            if (isFullscreen)
+              SplashCircularIcon(
                 padding: halfPadding,
                 onTap: () {
-                  _showRemaingText.value = !showText;
-                  controller.cancelCloseOverlay();
+                  controller.openSettingsMenu();
+                  controller.showAndHideOverlay(false);
                 },
-                child: Text(
-                  showText
-                      ? _query.durationFormatter(position)
-                      : _query.durationFormatter(position - duration),
-                  style: style.textStyle,
-                ),
+                child: style.settingsStyle.settings,
               ),
-            ),
-            SplashCircularIcon(
-              padding: halfPadding,
-              onTap: () {
-                controller.openSettingsMenu();
-                controller.showAndHideOverlay(false);
-              },
-              child: style.settingsStyle.settings,
-            ),
             if (metadata.enableChat)
               SplashCircularIcon(
                 padding: halfPadding,
@@ -88,7 +94,7 @@ class _OverlayBottomState extends State<OverlayBottom> {
               padding: halfPadding + Margin.right(padding / 2),
               onTap: () => controller.openOrCloseFullscreen(),
               child:
-                  isFullscreen ? barStyle.fullScreenExit : barStyle.fullScreen,
+              isFullscreen ? barStyle.fullScreenExit : barStyle.fullScreen,
             ),
           ]),
         ),
