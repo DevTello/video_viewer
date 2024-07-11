@@ -17,7 +17,7 @@ dependencies:
       url: https://github.com/mitch2na/helpers.git
       ref: 5307860863d657a4a1680e5f9682fece64432339
   http: 1.1.0
-  path_provider: 2.0.15
+  path_provider: 2.1.1
   provider: 6.0.5
   video_player: 2.7.2
   volume_watcher: 2.0.1
