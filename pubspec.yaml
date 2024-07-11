@@ -11,17 +11,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  gesture_x_detector: ^1.0.0
+  gesture_x_detector: 1.0.0
   helpers:
     git:
       url: https://github.com/mitch2na/helpers.git
       ref: 5307860863d657a4a1680e5f9682fece64432339
-  http: ^1.1.0
-  path_provider: ^2.0.15
-  provider: ^6.0.5
+  http: 1.1.0
+  path_provider: 2.0.15
+  provider: 6.0.5
   video_player: 2.7.2
-  volume_watcher: ^2.0.1
-  video_player_web_hls: ^1.1.0
+  volume_watcher: 2.0.1
+  video_player_web_hls: 1.1.0
 
 dev_dependencies:
   flutter_test:
