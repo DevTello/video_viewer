@@ -100,16 +100,16 @@ packages:
     dependency: "direct main"
     description:
       name: gesture_x_detector
-      sha256: "39a052752c29fd3fa778bcd783996a6ca572037f6fcbcd35289d25d2513a9725"
+      sha256: "777855ee4e1fa4d677c40d6a44b9106696ef6745879027c8871e334cee8cde1e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.1"
   helpers:
     dependency: "direct main"
     description:
       path: "."
-      ref: "5307860863d657a4a1680e5f9682fece64432339"
-      resolved-ref: "5307860863d657a4a1680e5f9682fece64432339"
+      ref: e9486562cb1ec5ac31fdd91ff573e99d51b2d57f
+      resolved-ref: e9486562cb1ec5ac31fdd91ff573e99d51b2d57f
       url: "https://github.com/mitch2na/helpers.git"
     source: git
     version: "1.2.0"
@@ -125,10 +125,10 @@ packages:
     dependency: "direct main"
     description:
       name: http
-      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
+      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   http_parser:
     dependency: transitive
     description:
@@ -137,14 +137,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: d9bdfd70d828eeb352390f81b18d6a354ef2044aa28ef25682079797fa7cd174
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.3"
   leak_tracker:
     dependency: transitive
     description:
@@ -213,10 +205,10 @@ packages:
     dependency: "direct main"
     description:
       name: path_provider
-      sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
+      sha256: c9e7d3a4cd1410877472158bee69963a4579f78b68c65a2b7d40d1a7a88bb161
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.15"
+    version: "2.1.3"
   path_provider_android:
     dependency: transitive
     description:
@@ -229,10 +221,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_foundation
-      sha256: "19314d595120f82aca0ba62787d58dde2cc6b5df7d2f0daf72489e38d1b57f2d"
+      sha256: f234384a3fdd67f989b4d54a5d73ca2a6c422fa55ae694381ae0f4375cd1ea16
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   path_provider_linux:
     dependency: transitive
     description:
@@ -285,10 +277,10 @@ packages:
     dependency: "direct main"
     description:
       name: provider
-      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.5"
+    version: "6.1.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -362,10 +354,10 @@ packages:
     dependency: "direct main"
     description:
       name: video_player
-      sha256: "74b86e63529cf5885130c639d74cd2f9232e7c8a66cbecbddd1dcb9dbd060d1e"
+      sha256: e30df0d226c4ef82e2c150ebf6834b3522cf3f654d8e2f9419d376cdc071425d
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.2"
+    version: "2.9.1"
   video_player_android:
     dependency: transitive
     description:
@@ -378,10 +370,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_avfoundation
-      sha256: "6387c2de77763b45104256b3b00b660089be4f909ded8631457dc11bf635e38f"
+      sha256: d1e9a824f2b324000dc8fb2dcb2a3285b6c1c7c487521c63306cc5b394f68a7c
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -402,10 +394,10 @@ packages:
     dependency: "direct main"
     description:
       name: video_player_web_hls
-      sha256: "278c7841a2450d1b1ad2a2eb746840045b07e5d2ad21663c84a1486925ed338b"
+      sha256: "9402d26a2e4bb311a30474c6eef1b20184a68c5ff5f88706292d10b0be33b86b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   vm_service:
     dependency: transitive
     description:
@@ -422,6 +414,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  web:
+    dependency: transitive
+    description:
+      name: web
+      sha256: "97da13628db363c635202ad97068d47c5b8aa555808e7a9411963c533b449b27"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   win32:
     dependency: transitive
     description:
@@ -439,5 +439,5 @@ packages:
     source: hosted
     version: "0.2.0+1"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
+  dart: ">=3.3.0 <4.0.0"
   flutter: ">=3.22.0"
