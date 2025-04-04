@@ -22,7 +22,7 @@ import 'package:video_viewer/ui/video_core/widgets/player.dart';
 import 'package:video_viewer/ui/widgets/play_and_pause.dart';
 import 'package:video_viewer/ui/widgets/transitions.dart';
 import 'package:video_viewer/ui/overlay/overlay.dart';
-import 'package:volume_watcher/volume_watcher.dart';
+import 'package:volume_watcher_plus/volume_watcher_plus.dart';
 
 class VideoViewerCore extends StatefulWidget {
   const VideoViewerCore({Key? key}) : super(key: key);
@@ -37,8 +37,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
   //------------------------------//
   //REWIND AND FORWARD (VARIABLES)//
   //------------------------------//
-  final ValueNotifier<int> _forwardAndRewindSecondsAmount =
-      ValueNotifier<int>(1);
+  final ValueNotifier<int> _forwardAndRewindSecondsAmount = ValueNotifier<int>(1);
   Duration _initialForwardPosition = Duration.zero;
   Offset _dragInitialDelta = Offset.zero;
   Axis _dragDirection = Axis.vertical;
@@ -75,7 +74,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
       _defaultForwardAmount = metadata.forwardAmount;
       switch (metadata.volumeManager) {
         case VideoViewerVolumeManager.device:
-          _maxVolume = await VolumeWatcher.getMaxVolume;
+          _maxVolume = await VolumeWatcherPlus.getMaxVolume;
           break;
         case VideoViewerVolumeManager.video:
           _maxVolume = 1.0;
@@ -103,9 +102,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
 
   bool _canListenerMove([VideoViewerController? controller]) {
     controller ??= _query.video(context);
-    return !(controller.isDraggingProgressBar ||
-        controller.activeAd != null ||
-        controller.isShowingChat);
+    return !(controller.isDraggingProgressBar || controller.activeAd != null || controller.isShowingChat);
   }
 
   //-------------------------------//
@@ -189,7 +186,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
     _currentVolume.value = volume;
     switch (_query.videoMetadata(context).volumeManager) {
       case VideoViewerVolumeManager.device:
-        await VolumeWatcher.setVolume(volume);
+        await VolumeWatcherPlus.setVolume(volume);
         break;
       case VideoViewerVolumeManager.video:
         await _query.video(context).video!.setVolume(volume);
@@ -270,8 +267,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
             onScaleUpdate: scale
                 ? (ScaleEvent details) {
                     final double newScale = _initialScale * details.scale;
-                    if (newScale >= _minScale && newScale <= _maxScale)
-                      _scale.value = newScale;
+                    if (newScale >= _minScale && newScale <= _maxScale) _scale.value = newScale;
                   }
                 : null,
             //---------------------------//
@@ -353,8 +349,7 @@ class _VideoViewerCoreState extends State<VideoViewerCore> {
           const VideoCoreBuffering(),
           if (metadata.enableShowReplayIconAtVideoEnd)
             CustomOpacityTransition(
-              visible: controller.position >= controller.duration &&
-                  !controller.isShowingOverlay,
+              visible: controller.position >= controller.duration && !controller.isShowingOverlay,
               child: const Center(
                 child: PlayAndPause(type: PlayAndPauseType.center),
               ),
